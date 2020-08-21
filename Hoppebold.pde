@@ -1,5 +1,5 @@
 Background bg;
-int amount = 8;
+int amount = 1;
 BouncingBall[] bb = new BouncingBall[amount];
 
 
@@ -10,12 +10,13 @@ void setup(){
   for(int i =0;i<amount;i++){
  bb[i]= new BouncingBall((int)random(50,width-50),(int)random(50,height-50),10,20,0,0.5);}
 fullScreen();
+frameRate(60);
 
 
 }
 
 void draw(){
-  clear();
+    clear();
   bg.display();
    for(int i =0;i<amount;i++){
   bb[i].move();
