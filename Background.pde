@@ -5,6 +5,6 @@ class Background{
   ellipse(100,100,20,20);
   
   
-  };
+  }
 
 }
