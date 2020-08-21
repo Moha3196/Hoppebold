@@ -9,8 +9,8 @@ PImage background;
   void display(){
     
   ellipse(100,100,20,20);
-  image(background,0,0);
-  
+  image(background,0,0,width,height);
+ 
   }
 
 }

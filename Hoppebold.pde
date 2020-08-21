@@ -1,7 +1,7 @@
 Background bg;
 void setup(){
 
-  
+  bg= new Background();
 fullScreen();
 
 
