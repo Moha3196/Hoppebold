@@ -5,11 +5,15 @@ class BouncingBall {
   
   BouncingBall(int lx, int ly,int vx, int vy){
   location.set(lx,ly);  
-  location.set(vx,vy)
+  velocity.set(vx,vy);
+  }
+  
+  void move(){
+  location.add(velocity);
   }
   
   void display(){
-  ellipse(100,100,20,20);
+  ellipse(location.x,location.y,20,20);
 
   }
 }
