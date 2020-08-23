@@ -35,10 +35,9 @@ class Background {
     stroke(1);
     fill(0, 0, 255);
     rect(0, height-40, width, 40);
-    //Draws the hill/ground
-    fill(0, 225, 0);
-    ellipse(width/2, height*1.25, width, height);
     
-    //image(background,0,0,width,height);
+    //Draws the hill/ground
+    //fill(0, 225, 0);
+    //ellipse(width/2, height*1.25, width-250, width-250);
   }
 }
