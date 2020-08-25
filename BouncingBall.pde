@@ -67,7 +67,7 @@ class BouncingBall {
     for (int i = 0; i < bb.length; i++) {
       if (bb[i].location.x - 10 < location.x-10 && bb[i].location.x +10 > location.x-10||((bb[i].location.x +10 > location.x+10)&&(bb[i].location.x -10 < location.x+10))) {
         if ((bb[i].location.y + 10 > location.y-10 && bb[i].location.y  -10 < location.y-10)||bb[i].location.y + 10 > location.y+10 && bb[i].location.y  -10 < location.y+10) {
-          velocity.rotate(PI/2);
+          velocity.rotate(PI/4);
           //(PVector.angleBetween(location,bb[i].location))/2
         }
       }
@@ -76,13 +76,17 @@ class BouncingBall {
       Button();
     }
     for (int i = 0; i < bb.length; i++) {
-      float distX = bb[i].location.x - bb1.location.x;
-      float distY = bb[i].location.y - bb1.location.y;
+      float distX = bb1.location.x - bb[i].location.x;
+      float distY = bb1.location.y - bb[i].location.y;
       float distance = sqrt( (distX*distX) + (distY*distY) );
       //println(distance, bb1.location.x, bb1.location.y);
       if (distance <= (bbr1+bbr)) {
         //println(distance, "Collision", bb[i].location.x, bb[i].location.y);
-        bb[i].velocity.rotate(PI/4);
+        if(bb[i].velocity.x >0)
+        bb[i].velocity.rotate(-PI/2);
+        else
+                bb[i].velocity.rotate(PI/2);
+
       }
     }
   }
