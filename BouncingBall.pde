@@ -88,16 +88,15 @@ class BouncingBall {
   }
 
   void Restart() {
-
-    for (int i = 0; i < bb.length; i++) {
-      bb[i].location.x = (int)random(50, width-50);
-      bb[i].location.y = (int)random(50, height-300);
-      bb[i].velocity.x = 10;
-      bb[i].velocity.y = 20;
-      bb[i].acceleration.x = 0;
-      bb[i].acceleration.y = 0.5;
-    }
+    location.x = (int)random(50, width-50);
+    location.y = (int)random(50, height-300);
+    velocity.x = 10;
+    velocity.y = 20;
+    acceleration.x = 0;
+    acceleration.y = 0.5;
+    stopped = false;
   }
+
 
   void display() {
     fill(0, 225, 0);

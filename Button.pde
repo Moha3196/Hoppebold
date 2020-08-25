@@ -11,17 +11,21 @@ void Button() {
   //boolean mouseJustPressed = mousePressed & !lastMousePressed;
   //lastMousePressed = mousePressed;
   
-  stroke(1);
+  stroke(10);
   fill(0, 150, 50);
+  imageMode(CENTER);
   rect(xPos, yPos, wSize, hSize);
   textSize(textSize);
+  fill(255);
+  textAlign(CENTER,CENTER);
   text("Retry", xPos+wSize/2, yPos+hSize/2);
+  //noFill();
 }
 
 //Checks if a button has been pressed
-boolean isButtonPressed(int mouseXPos, int mouseYPos, boolean isMousePressed) {
+boolean isButtonPressed(int mouseXPos, int mouseYPos) {
   if (mouseXPos > xPos && mouseXPos < xPos+wSize && mouseYPos > yPos && mouseYPos < yPos+hSize) {
-    if (isMousePressed == true) {
+    if (mousePressed == true) {
       return true;
     }
   }
