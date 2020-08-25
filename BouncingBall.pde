@@ -1,13 +1,10 @@
 class BouncingBall {
 
-
   PVector location = new PVector(0, 0);
   PVector velocity= new PVector(0, 0);
   PVector acceleration = new PVector(0, 0);
   boolean stopped = false;
   float bbr = 10;
-  //boolean Stopped = false;
-  //float mass = 0.25;
 
 
   BouncingBall(int lx, int ly, int vx, int vy, float ax, float ay) {
@@ -82,11 +79,7 @@ class BouncingBall {
       //println(distance, bb1.location.x, bb1.location.y);
       if (distance <= (bbr1+bbr)) {
         //println(distance, "Collision", bb[i].location.x, bb[i].location.y);
-        if(bb[i].velocity.x >0)
-        bb[i].velocity.rotate(-PI/2);
-        else
-                bb[i].velocity.rotate(PI/2);
-
+        bb[i].velocity.rotate(PI/2);
       }
     }
   }

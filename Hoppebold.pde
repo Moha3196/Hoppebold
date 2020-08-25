@@ -20,29 +20,26 @@ void setup() {
     //bb[i]= new BouncingBall((int)random(50, width-50), (int)random(50, height-50), 10, 20, 0, 0.5);
     bb[i]= new BouncingBall((int)random(50, width-50), (int)random(50, height-300), 10, 20, 0, 0.5);
   }
-  
+
   frameRate(60);
 }
 
 void draw() {
-  print(amountStopped);
+  //print(amountStopped);
   clear();
   bg.display();
-  bb1.display();
+  //bb1.display();
   //bb1.move();
   //bb1.collision();
   //Button();
-  
+
   for (int i = 0; i <amount; i++) {
-if (isButtonPressed(mouseX, mouseY)) {
+    if (isButtonPressed(mouseX, mouseY)) {
       bb[i].Restart();
       amountStopped = 0;
-    
-  }
-    
+    }
     bb[i].move();
     bb[i].display();
     bb[i].collision();
-
-}
+  }
 }
