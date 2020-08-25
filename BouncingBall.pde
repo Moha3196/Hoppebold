@@ -4,7 +4,9 @@ class BouncingBall {
   PVector location = new PVector(0, 0);
   PVector velocity= new PVector(0, 0);
   PVector acceleration = new PVector(0, 0);
+  boolean stopped = false;
   float bbr = 10;
+  //boolean Stopped = false;
   //float mass = 0.25;
 
 
@@ -30,25 +32,35 @@ class BouncingBall {
   void collision() {
     //Makes the Balls bounce of the ground
     if (location.y+10 > height)
-      if (velocity.y>0)
-        velocity.set(velocity.x, -velocity.y);
-    //Makes the Balls bounce of the right wall
-    if (location.x+10 > width)
-      velocity.set(-velocity.x, velocity.y);
-    //Makes the Balls bounce of the left wall
-    if (location.x-10 < 0)
-      velocity.set(-velocity.x, velocity.y);
-    //Makes the Balls bounce of the top wall
-    if (location.y-10 < 0)
       velocity.set(velocity.x, -velocity.y);
-      
+    //Makes the Balls bounce of the right wall
+    if (location.x+10 > width) {
+      velocity.set(-velocity.x, velocity.y);
+      location.set(width-11, location.y);
+    }
+    //Makes the Balls bounce of the left wall
+    if (location.x-10 < 0) {
+      velocity.set(-velocity.x, velocity.y);
+      location.set(0+11, location.y);
+    }
+    //Makes the Balls bounce of the top wall
+    if (location.y-10 < 0) {
+      velocity.set(velocity.x, -velocity.y);
+      location.set(location.x, 0+11 );
+    }
     //Makes the Balls stop at the sea on the right 
     if (location.x+10 <= width && location.y+10 <= height && location.y >= height-40  && location.x-10 >= width-185) {
       velocity.set(velocity.x = 0, velocity.y = 0);
+      if (stopped==false)
+        amountStopped++;
+      stopped = true;
     }
     //Makes the Balls stop at the sea on the left
     if (location.x-10 >= 0 && location.y+10 <= height && location.y >= height-40  && location.x+10 <= 185) {
       velocity.set(velocity.x = 0, velocity.y = 0);
+      if (stopped==false)
+        amountStopped++;
+      stopped = true;
     }
 
 
@@ -60,15 +72,30 @@ class BouncingBall {
         }
       }
     }
+    if (amount <= amountStopped) {
+      Button();
+    }
     for (int i = 0; i < bb.length; i++) {
       float distX = bb[i].location.x - bb1.location.x;
       float distY = bb[i].location.y - bb1.location.y;
       float distance = sqrt( (distX*distX) + (distY*distY) );
-      println(distance, bb1.location.x, bb1.location.y);
+      //println(distance, bb1.location.x, bb1.location.y);
       if (distance <= (bbr1+bbr)) {
         //println(distance, "Collision", bb[i].location.x, bb[i].location.y);
-        bb[i].velocity.rotate(PI/2);
+        bb[i].velocity.rotate(PI/4);
       }
+    }
+  }
+
+  void Restart() {
+
+    for (int i = 0; i < bb.length; i++) {
+      bb[i].location.x = (int)random(50, width-50);
+      bb[i].location.y = (int)random(50, height-300);
+      bb[i].velocity.x = 10;
+      bb[i].velocity.y = 20;
+      bb[i].acceleration.x = 0;
+      bb[i].acceleration.y = 0.5;
     }
   }
 
